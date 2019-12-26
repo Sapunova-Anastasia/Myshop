@@ -46,7 +46,7 @@ def ProductDetail(request, id, slug):
 
 class RegisterFormView(FormView):
     form_class = UserCreationForm
-    success_url = "/accounts/login/"
+    success_url = "/"
 
     template_name = "register.html"
 
