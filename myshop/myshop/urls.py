@@ -21,12 +21,14 @@ from django.conf.urls.static import static
 from shop import views
 
 urlpatterns = [
+    # path('api/', include('shop.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^cart/', include(('cart.urls', 'cart'), namespace='cart')),
     url(r'^', include(('shop.urls', 'shop'), namespace='shop')),
     url(r'^order/', include(('orders.urls', 'orders'), namespace='orders')),
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/register/$', views.RegisterFormView.as_view(), name='register'),
+    # path('api-auth/', include('rest_framework.urls')),
 ]
 
 if settings.DEBUG:

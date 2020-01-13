@@ -9,6 +9,10 @@ from django.views.generic.edit import FormView
 from shop.models import Product, Comments
 from .forms import CommentForm
 from django.http import HttpResponseRedirect
+from rest_framework import viewsets
+from .serializers import CommentSerializer, ProductDetailSerializer, ProductListSerializer
+from rest_framework.response import Response
+from core.views import ActionSerializedViewSet
 
 
 #from django.template import RequestContext
@@ -67,4 +71,21 @@ def addcomment(request, id, slug):
             comment.comments_product = Product.objects.get(id=id)
             form.save()
     return HttpResponseRedirect('/%s/%s/' % (id, slug))
+
+class CommentViewSet(viewsets.ModelViewSet):
+    serializer_class = CommentSerializer
+    queryset = Comments.objects.all()
+
+class ProductViewSet(ActionSerializedViewSet):
+    serializer_class = ProductListSerializer
+    queryset = Product.objects.all()
+
+    action_serializers = {
+        'list': ProductListSerializer,
+        'retrieve': ProductDetailSerializer,
+    }
+
+# class ProductDetailViewSet(viewsets.ModelViewSet):
+#     serializer_class = ProductDetailSerializer
+#     queryset = Product.objects.all()
 

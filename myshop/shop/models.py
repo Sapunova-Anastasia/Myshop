@@ -53,7 +53,7 @@ class Comments(models.Model):
         verbose_name_plural = "Comments"
 
     comments_text = models.TextField(verbose_name='Комментарии')
-    comments_product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    comments_product = models.ForeignKey(Product, on_delete=models.PROTECT, related_name='comments')
     author = models.CharField(max_length=200, verbose_name="Автор")
     #author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     #created_date = models.DateTimeField(default=timezone.now,

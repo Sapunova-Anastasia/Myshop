@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,11 @@ CART_SESSION_ID = 'cart'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 #LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+#REGISTRATION_REDIRECT_URL = '/'
+REST_FRAMEWORK={
+    'DEFAULT_PERMISSION_CLASSES': [],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
 
 
 
